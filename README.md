@@ -136,5 +136,8 @@ Instalé `seaborn`, calculé la matriz de correlación con `df.corr()` y generé
 
 <img width="589" height="288" alt="image" src="https://github.com/user-attachments/assets/e4b79f28-4325-436d-bb54-aec18fc2a182" />
 
+## Conclusión
+
+Este laboratorio permitió comprender la importancia del análisis exploratorio antes de entrenar cualquier modelo de aprendizaje automático. A través de las estadísticas descriptivas, los gráficos de densidad, los boxplots y el mapa de calor de correlación, fue posible identificar patrones relevantes en los datos biomecánicos, como la fuerte relación entre `pelvic_incidence` y `sacral_slope`, así como la influencia de `degree_spondylolisthesis` sobre la variable de clasificación (`class`). Este tipo de análisis resulta clave para tomar decisiones informadas sobre qué características priorizar y qué transformaciones aplicar en las siguientes etapas del proyecto de machine learning.
 
 Con este último paso finalicé el Laboratorio 3.2, completando el análisis exploratorio del conjunto de datos.
