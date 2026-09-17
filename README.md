@@ -140,4 +140,72 @@ Instalé `seaborn`, calculé la matriz de correlación con `df.corr()` y generé
 
 Este laboratorio permitió comprender la importancia del análisis exploratorio antes de entrenar cualquier modelo de aprendizaje automático. A través de las estadísticas descriptivas, los gráficos de densidad, los boxplots y el mapa de calor de correlación, fue posible identificar patrones relevantes en los datos biomecánicos, como la fuerte relación entre `pelvic_incidence` y `sacral_slope`, así como la influencia de `degree_spondylolisthesis` sobre la variable de clasificación (`class`). Este tipo de análisis resulta clave para tomar decisiones informadas sobre qué características priorizar y qué transformaciones aplicar en las siguientes etapas del proyecto de machine learning.
 
+# Laboratorio 3.3 – Amazon SageMaker: Codificación de datos categóricos
+
+Este laboratorio consiste en codificar variables categóricas usando el conjunto de datos de automóviles del repositorio de Machine Learning de UC Irvine, aplicando codificación tanto a datos categóricos ordinales como no ordinales.
+
+## 1. Ingreso al laboratorio guiado
+Entré a la plataforma de AWS Academy y abrí la guía del Laboratorio 3.3, cuyos objetivos son codificar datos categóricos ordinales y datos categóricos no ordinales.
+
+<img width="589" height="300" alt="image" src="https://github.com/user-attachments/assets/6b67de77-1c21-4946-90a4-514582c7fd3f" />
+
+## 2. Acceso al panel de Amazon SageMaker AI
+Ingresé a la consola de AWS y entré al panel general de Amazon SageMaker AI para verificar el estado de los recursos disponibles.
+
+<img width="589" height="303" alt="image" src="https://github.com/user-attachments/assets/d71671b4-2c1a-4e2f-af31-21c8c3be7af4" />
+
+
+## 3. Verificación de la instancia de cuaderno
+Fui a la sección "Notebooks" y confirmé que la instancia `MyNotebook` estaba en estado **InService**, lista para abrirse en JupyterLab.
+
+<img width="589" height="300" alt="image" src="https://github.com/user-attachments/assets/4b22b5fc-c7a3-4f0d-acd5-bce4260ec985" />
+
+
+## 4. Apertura del notebook e introducción al dataset
+Abrí el cuaderno `3_3-machinelearning.ipynb`. A diferencia de los laboratorios anteriores, este trabaja con un nuevo conjunto de datos (automóviles) en vez del de columna vertebral. El dataset contiene información sobre especificaciones de vehículos, su clasificación de riesgo de seguro y sus pérdidas normalizadas.
+
+<img width="589" height="298" alt="image" src="https://github.com/user-attachments/assets/216daa01-54e8-4a77-badd-660a5a1d5a70" />
+
+
+## 5. Importación y exploración de los datos
+Importé `pandas`, configuré las opciones de visualización y cargué el archivo `imports-85.csv` en un DataFrame (`df_car`), asignando manualmente los nombres de columna ya que el archivo no traía encabezado. Con `df_car.shape` confirmé que el dataset tiene 205 filas y 25 columnas, y con `df_car.head(5)` visualicé las primeras filas.
+
+<img width="589" height="300" alt="image" src="https://github.com/user-attachments/assets/acbae88c-56cd-47bc-b22b-4958c8e935a5" />
+
+
+## 6. Selección de columnas categóricas a codificar
+Revisé los nombres de todas las columnas con `df_car.columns` y seleccioné cuatro columnas de interés (`aspiration`, `num-of-doors`, `drive-wheels`, `num-of-cylinders`) para trabajar la codificación, todas con valores de tipo texto.
+
+<img width="589" height="216" alt="image" src="https://github.com/user-attachments/assets/0a04b263-3303-4f4f-8959-6fd0ca005479" />
+
+
+## 7. Codificación de variables ordinales
+Para las columnas con orden lógico (`num-of-doors` y `num-of-cylinders`), creé un diccionario de mapeo (por ejemplo, "two" → 2, "four" → 4) y usé `.replace()` para convertir los valores de texto en sus equivalentes numéricos, generando las nuevas columnas `doors` y `cylinders`.
+
+<img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/a8483892-ae06-45e3-9c54-a8eaadb05627" />
+
+
+## 8. Codificación de variables no ordinales con `get_dummies`
+Para la columna `drive-wheels`, que no tiene un orden lógico entre sus valores (fwd, rwd, 4wd), usé el método `pd.get_dummies()` para generar tres columnas binarias nuevas: `drive-wheels_4wd`, `drive-wheels_fwd` y `drive-wheels_rwd`, donde cada una indica con `True`/`False` si esa observación corresponde a ese tipo de tracción.
+
+<img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/c742eacd-607b-45be-86d3-5d97acb3a716" />
+
+
+
+## 9. Codificación binaria simplificada con `drop_first`
+Para la columna `aspiration`, que solo tiene dos valores posibles (std y turbo), apliqué `get_dummies()` especificando `drop_first=True`, de forma que solo se generó una columna (`aspiration_turbo`), evitando redundancia: si el valor es `False`, se sobreentiende que es `std`.
+
+<img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/1a0c0b68-d3e8-4f58-864b-bd24f37d760b" />
+
+
+## 10. Verificación final del DataFrame
+Con `df_car.head()` confirmé que el DataFrame final contenía todas las columnas codificadas correctamente: `num-of-doors`, `num-of-cylinders`, `doors`, `cylinders`, `drive-wheels_4wd`, `drive-wheels_fwd`, `drive-wheels_rwd` y `aspiration_turbo`, todas listas para ser usadas en un modelo de machine learning.
+
+<img width="589" height="178" alt="image" src="https://github.com/user-attachments/assets/1e02873b-de0e-47b8-b979-36bfc9d9e252" />
+
+
+## Conclusión
+
+Este laboratorio permitió comprender la diferencia entre codificar variables categóricas ordinales y no ordinales, dos técnicas fundamentales en el preprocesamiento de datos para machine learning. Mediante el mapeo manual con `.replace()` y el uso de variables dummy con `get_dummies()`, fue posible transformar columnas de texto en representaciones numéricas interpretables por los algoritmos, evitando introducir relaciones de orden inexistentes entre categorías como `drive-wheels`. Esto sienta las bases necesarias para continuar con las siguientes etapas del proyecto de machine learning, como el entrenamiento de modelos predictivos.
+
 Con este último paso finalicé el Laboratorio 3.2, completando el análisis exploratorio del conjunto de datos.
