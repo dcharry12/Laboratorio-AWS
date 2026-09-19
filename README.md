@@ -1,3 +1,5 @@
+
+
 # Laboratorios en AWS academy
 
 - **Actividad:4** Laboratorio en AWS
@@ -13,9 +15,16 @@ En este repositorio dejo consignada la evidencia de los tres laboratorios guiado
 * Laboratorio 3.2 – Amazon SageMaker: exploración de datos.
 * Laboratorio 3.3 – Amazon SageMaker: codificación de datos categóricos.
 
+## Evidencia de acceso a la plataforma de laboratorio
+
+<img width="1823" height="812" alt="evidencia" src="https://github.com/user-attachments/assets/04ff0f58-f517-4bd3-8d3b-26cde29d9313" />
+
+
 # Laboratorio 3.1 – Amazon SageMaker: Creación e importación de datos
 
 Para este laboratorio ingresé al entorno de AWS Academy y seguí la guía correspondiente al Módulo 3, donde se trabaja la implementación de una canalización de aprendizaje automático usando Amazon SageMaker.
+
+
 
 ## 1. Ingreso al laboratorio guiado
 Entré a la plataforma de AWS Academy Learner Lab y abrí la guía del Laboratorio 3.1, donde se explican los objetivos: iniciar una instancia de cuaderno de SageMaker, crear un cuaderno de Jupyter, ejecutar código y celdas de Markdown, y descargar datos desde una fuente externa.
