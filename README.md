@@ -221,14 +221,14 @@ Para las columnas con orden lógico (`num-of-doors` y `num-of-cylinders`), creé
 <img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/a8483892-ae06-45e3-9c54-a8eaadb05627" />
 
 
-## 8. Codificación de variables no ordinales con `get_dummies`
+## 8. Codificación de variables no ordinales con get_dummies
 Para la columna `drive-wheels`, que no tiene un orden lógico entre sus valores (fwd, rwd, 4wd), usé el método `pd.get_dummies()` para generar tres columnas binarias nuevas: `drive-wheels_4wd`, `drive-wheels_fwd` y `drive-wheels_rwd`, donde cada una indica con `True`/`False` si esa observación corresponde a ese tipo de tracción.
 
 <img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/c742eacd-607b-45be-86d3-5d97acb3a716" />
 
 
 
-## 9. Codificación binaria simplificada con `drop_first`
+## 9. Codificación binaria simplificada con drop_first
 Para la columna `aspiration`, que solo tiene dos valores posibles (std y turbo), apliqué `get_dummies()` especificando `drop_first=True`, de forma que solo se generó una columna (`aspiration_turbo`), evitando redundancia: si el valor es `False`, se sobreentiende que es `std`.
 
 <img width="589" height="264" alt="image" src="https://github.com/user-attachments/assets/1a0c0b68-d3e8-4f58-864b-bd24f37d760b" />
