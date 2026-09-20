@@ -22,9 +22,17 @@ En este repositorio dejo consignada la evidencia de los tres laboratorios guiado
 
 # Laboratorio 3.1 – Amazon SageMaker: Creación e importación de datos
 
-Para este laboratorio ingresé al entorno de AWS Academy y seguí la guía correspondiente al Módulo 3, donde se trabaja la implementación de una canalización de aprendizaje automático usando Amazon SageMaker.
+### ¿Qué hice y por qué?
 
+En este laboratorio el objetivo era dejar lista una instancia de cuaderno en SageMaker y aprender a moverme dentro de JupyterLab antes de trabajar con datos reales. Hice lo siguiente:
 
+1. **Creé una instancia de cuaderno** llamada `MyNotebook`, de tipo `ml.t3.medium`, con la plataforma `Amazon Linux 2023, Jupyter Lab 4`. Dejé el volumen en 5 GB y el rol de IAM que me sugirió la consola (con permisos de SageMaker y S3), porque para este laboratorio no necesitaba nada adicional.
+2. **Abrí JupyterLab** una vez la instancia pasó de estado *Pending* a *InService*, y entré directamente a crear mi propio notebook para no perder tiempo revisando plantillas de ejemplo.
+3. **Creé mi notebook** (`lab31.ipynb`) y agregué el código para descargar el dataset de la columna vertebral (Vertebral Column Dataset, del repositorio de UCI) directamente desde su URL, extraerlo con `zipfile` y cargarlo en un `DataFrame` de Pandas usando `scipy.io.arff`.
+4. Al ejecutar la celda del import me salió `ModuleNotFoundError: No module named 'scipy'`, porque el kernel no lo trae instalado por defecto. Lo resolví agregando `!pip install scipy` en una celda antes del import y volviendo a correr todo.
+5. **Cargué los datos** del archivo (`column_2C_weka.arff`) en un `DataFrame` y revisé las primeras filas con `df.head()` para confirmar que la carga había funcionado.
+
+### Pasos y capturas
 
 ## 1. Ingreso al laboratorio guiado
 Entré a la plataforma de AWS Academy Learner Lab y abrí la guía del Laboratorio 3.1, donde se explican los objetivos: iniciar una instancia de cuaderno de SageMaker, crear un cuaderno de Jupyter, ejecutar código y celdas de Markdown, y descargar datos desde una fuente externa.
@@ -78,7 +86,17 @@ Finalmente, con `df.head()` visualicé las primeras filas del dataset, confirman
 
 # Laboratorio 3.2 – Amazon SageMaker: Exploración de datos
 
-Este laboratorio es continuación del anterior y consiste en examinar los datos del conjunto de la columna vertebral cargados previamente, usando estadísticas y gráficos con Pandas.
+### ¿Qué hice y por qué?
+
+En este laboratorio el objetivo era explorar el conjunto de datos ya importado en el laboratorio anterior, usando estadísticas y gráficos para entender mejor su comportamiento. Hice lo siguiente:
+
+1. **Verifiqué que la instancia** `MyNotebook` siguiera en estado *InService* y abrí el notebook `3_2-machinelearning.ipynb`, donde se plantea el escenario de negocio: detectar anomalías en pacientes ortopédicos según seis características biomecánicas.
+2. **Repetí la configuración inicial** (instalar `scipy` e importar los datos) porque cada notebook funciona de forma independiente, así que las librerías y los datos deben cargarse de nuevo aunque ya se hayan usado antes.
+3. **Ejecuté `df.describe()`** para obtener una primera impresión numérica de los datos (conteo, media, desviación estándar, mínimos, máximos y cuartiles) antes de pasar a las visualizaciones.
+4. Al graficar con `matplotlib` me encontré con el mismo tipo de error del laboratorio anterior (`ModuleNotFoundError`), así que instalé la librería con `!pip install matplotlib` y luego sí pude generar el gráfico general con `df.plot()`.
+5. **Profundicé la exploración** con gráficos de densidad por característica, boxplots agrupados por clase, una matriz de dispersión y, finalmente, un mapa de calor de correlación (instalando `seaborn` de la misma forma), para identificar qué variables se relacionan más entre sí y con la clase de diagnóstico.
+
+### Pasos y capturas
 
 ## 1. Ingreso al laboratorio guiado
 Entré a la plataforma de AWS Academy y abrí la guía del Laboratorio 3.2, cuyos objetivos son explorar y mostrar estadísticas mediante Pandas, y usar gráficos para explorar características de los datos.
@@ -151,7 +169,18 @@ Este laboratorio permitió comprender la importancia del análisis exploratorio 
 
 # Laboratorio 3.3 – Amazon SageMaker: Codificación de datos categóricos
 
-Este laboratorio consiste en codificar variables categóricas usando el conjunto de datos de automóviles del repositorio de Machine Learning de UC Irvine, aplicando codificación tanto a datos categóricos ordinales como no ordinales.
+### ¿Qué hice y por qué?
+
+En este laboratorio el objetivo era aprender a codificar variables categóricas de un nuevo conjunto de datos (automóviles), diferenciando entre variables con orden lógico y sin él. Hice lo siguiente:
+
+1. **Verifiqué la instancia** `MyNotebook` en estado *InService* y abrí el notebook `3_3-machinelearning.ipynb`, que trabaja con un dataset distinto al de los laboratorios anteriores: especificaciones de automóviles, su clasificación de riesgo de seguro y sus pérdidas normalizadas.
+2. **Importé y exploré los datos** cargando el archivo `imports-85.csv` en un DataFrame (`df_car`), asignando manualmente los nombres de columna porque el archivo no traía encabezado. Confirmé con `df_car.shape` que tenía 205 filas y 25 columnas.
+3. **Seleccioné cuatro columnas categóricas** de interés (`aspiration`, `num-of-doors`, `drive-wheels`, `num-of-cylinders`) para trabajar la codificación, todas con valores de texto.
+4. **Codifiqué las variables ordinales** (`num-of-doors` y `num-of-cylinders`) usando un diccionario de mapeo y `.replace()`, porque estas sí tienen un orden lógico (más puertas o más cilindros es una cantidad mayor) y convertirlas directamente a su número real conserva esa relación.
+5. **Codifiqué las variables no ordinales** con `pd.get_dummies()`: primero `drive-wheels` (generando tres columnas binarias, una por cada tipo de tracción) y luego `aspiration`, esta última usando `drop_first=True` ya que solo tiene dos valores posibles y una sola columna binaria es suficiente para representarla.
+6. **Verifiqué el resultado final** con `df_car.head()`, confirmando que todas las columnas quedaron codificadas correctamente y listas para un modelo de machine learning.
+
+### Pasos y capturas
 
 ## 1. Ingreso al laboratorio guiado
 Entré a la plataforma de AWS Academy y abrí la guía del Laboratorio 3.3, cuyos objetivos son codificar datos categóricos ordinales y datos categóricos no ordinales.
