@@ -117,7 +117,7 @@ Fui a la sección "Notebooks" y confirmé que la instancia `MyNotebook` seguía 
 ## 4. Apertura del notebook del laboratorio
 Abrí el cuaderno `3_2-machinelearning.ipynb`, donde se presenta el escenario empresarial: mejorar la detección de anomalías en pacientes ortopédicos a partir de seis características biomecánicas, clasificando a los pacientes como *normal* o *anormal*.
 
-<img width="589" height="300" alt="image" src="https://github.com/user-attachments/assets/186e52da-84b1-4518-9ede-d692e804a781" />
+<img width="1907" height="921" alt="image" src="https://github.com/user-attachments/assets/75c410cf-77e1-4e23-8f7f-6190805cb9bb" />
 
 
 ## 5. Configuración del laboratorio (carga de datos)
