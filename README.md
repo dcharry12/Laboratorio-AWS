@@ -126,13 +126,13 @@ Como este laboratorio continúa el anterior, ejecuté nuevamente las celdas de c
 <img width="589" height="284" alt="image" src="https://github.com/user-attachments/assets/34505cd8-14cf-4c4a-a4de-d4b731d2493a" />
 
 
-## 6. Estadísticas descriptivas con `describe()`
+## 6. Estadísticas descriptivas con describe()
 Ejecuté `df.describe()` para obtener las estadísticas de cada característica del conjunto de datos (conteo, media, desviación estándar, mínimo, máximo y cuartiles) de las seis variables biomecánicas.
 
 <img width="589" height="287" alt="image" src="https://github.com/user-attachments/assets/b8e582aa-a912-4dd3-8f46-e44fc10d987c" />
 
 
-## 7. Instalación de `matplotlib` y gráfico general
+## 7. Instalación de matplotlib y gráfico general
 Instalé la librería `matplotlib` con `pip install matplotlib` y luego grafiqué todas las variables con `df.plot()`, obteniendo una vista general del comportamiento de los datos a lo largo de las 310 observaciones.
 
 <img width="589" height="267" alt="image" src="https://github.com/user-attachments/assets/c1c5dda5-ef93-4149-ad15-400ad3f01339" />
@@ -200,7 +200,7 @@ Fui a la sección "Notebooks" y confirmé que la instancia `MyNotebook` estaba e
 ## 4. Apertura del notebook e introducción al dataset
 Abrí el cuaderno `3_3-machinelearning.ipynb`. A diferencia de los laboratorios anteriores, este trabaja con un nuevo conjunto de datos (automóviles) en vez del de columna vertebral. El dataset contiene información sobre especificaciones de vehículos, su clasificación de riesgo de seguro y sus pérdidas normalizadas.
 
-<img width="589" height="298" alt="image" src="https://github.com/user-attachments/assets/216daa01-54e8-4a77-badd-660a5a1d5a70" />
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/0a8ab38d-cfe9-451f-8666-333ace886c8a" />
 
 
 ## 5. Importación y exploración de los datos
